@@ -1,0 +1,200 @@
+/* Global styles for the RSS Vision app with glassmorphic Vision OS-inspired design */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 10% 3.9%;
+    
+    --radius: 1rem;
+    
+    /* Glassmorphism variables */
+    --glass-background: rgba(255, 255, 255, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --glass-shadow: rgba(0, 0, 0, 0.05);
+    --glass-blur: 15px;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    
+    /* Glassmorphism variables for dark mode */
+    --glass-background: rgba(23, 23, 28, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-shadow: rgba(0, 0, 0, 0.2);
+    --glass-blur: 15px;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer components {
+  /* Glassmorphic card component */
+  .glass-card {
+    @apply relative overflow-hidden rounded-2xl;
+    background: var(--glass-background);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 8px 32px 0 var(--glass-shadow);
+  }
+  
+  /* Glassmorphic navigation */
+  .glass-nav {
+    @apply fixed z-50 w-full rounded-b-2xl;
+    background: var(--glass-background);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border-bottom: 1px solid var(--glass-border);
+    box-shadow: 0 4px 16px 0 var(--glass-shadow);
+  }
+  
+  /* Glassmorphic bottom navigation for mobile */
+  .glass-bottom-nav {
+    @apply fixed bottom-0 z-50 w-full rounded-t-2xl;
+    background: var(--glass-background);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border-top: 1px solid var(--glass-border);
+    box-shadow: 0 -4px 16px 0 var(--glass-shadow);
+  }
+  
+  /* Article card with swipe functionality */
+  .swipe-card {
+    @apply glass-card w-full max-w-md mx-auto transition-all duration-300 ease-out;
+    transform-origin: center center;
+  }
+  
+  .swipe-card.swiping-left {
+    transform: translateX(-150%) rotate(-20deg);
+    opacity: 0;
+  }
+  
+  .swipe-card.swiping-right {
+    transform: translateX(150%) rotate(20deg);
+    opacity: 0;
+  }
+  
+  /* Blurred background image container */
+  .blurred-bg {
+    @apply fixed inset-0 w-full h-full -z-10 overflow-hidden;
+  }
+  
+  .blurred-bg img {
+    @apply w-full h-full object-cover;
+    filter: blur(10px);
+    transform: scale(1.1);
+  }
+  
+  /* Reader mode styles */
+  .reader-content {
+    @apply max-w-3xl mx-auto px-4 py-8 leading-relaxed;
+    font-size: 1.125rem;
+  }
+  
+  .reader-content h1 {
+    @apply text-3xl font-bold mb-6;
+  }
+  
+  .reader-content h2 {
+    @apply text-2xl font-bold mt-8 mb-4;
+  }
+  
+  .reader-content p {
+    @apply mb-4;
+  }
+  
+  .reader-content img {
+    @apply my-6 rounded-lg max-w-full h-auto;
+  }
+  
+  /* Progress indicator */
+  .progress-ring {
+    @apply relative inline-flex items-center justify-center;
+  }
+  
+  .progress-ring circle {
+    @apply transition-all duration-300 ease-in-out;
+    stroke-linecap: round;
+  }
+  
+  /* Time indicator */
+  .time-ago {
+    @apply text-sm text-muted-foreground;
+  }
+  
+  /* Favorite button animation */
+  .favorite-btn {
+    @apply transition-transform duration-300;
+  }
+  
+  .favorite-btn:active {
+    transform: scale(1.3);
+  }
+  
+  .favorite-btn.active {
+    @apply text-red-500;
+  }
+}
