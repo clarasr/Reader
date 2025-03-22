@@ -1,3 +1,4 @@
+"use client";
 import { useState, useEffect } from 'react';
 import Navbar from '@/components/navbar';
 import MobileNavbar from '@/components/mobile-navbar';
