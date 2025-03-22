@@ -1,3 +1,4 @@
+"use client";
 import { useState, useEffect } from 'react';
 import { testFeeds, loadTestFeeds } from '@/lib/test-feeds';
 import useFeedManager from '@/hooks/use-feed-manager';
