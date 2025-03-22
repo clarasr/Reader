@@ -1,3 +1,4 @@
+"use client";
 import { useState, useEffect } from 'react';
 import { useSwipeable } from 'react-swipeable';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
